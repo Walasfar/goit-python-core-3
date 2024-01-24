@@ -16,7 +16,7 @@ raw_numbers = [
 
 
 def normalize_phone(phone_number):
-    pattern = r"[\D+]"
+    pattern = r"[\D]" # Delete everything except the numbers \D
     ph_number = re.sub(pattern, "", phone_number)
     structure_number = len(ph_number)
     match structure_number:
