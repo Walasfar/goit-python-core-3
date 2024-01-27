@@ -24,7 +24,7 @@ def get_upcoming_birthdays(users):
                     after_weekend = birthday + timedelta(days=1)
                     reminder['congratulation_date'] = after_weekend.isoformat()
                 
-                case _: # Просто видить дату
+                case _: # Просто виводить дату
                     reminder['congratulation_date'] = birthday.isoformat()
                     
             reminder_list.append(reminder) # Добавляємо дату
