@@ -5,31 +5,31 @@ def get_upcoming_birthdays(users):
     for user in users:
         now = datetime.today().date()
         birthday = datetime.strptime(user['birthday'], "%Y.%m.%d").date()
-        until_the_birthday = now - birthday
+        until_the_birthday = now - birthday # Різниця дат
         
 
-        if birthday < now:
+        if birthday < now: # Якщо пройшов -> продовжуемо
             continue
         
-        elif until_the_birthday.days < 7:
-            reminder = {'name': user['name'], 'congratulation_date': None}
-            weekday = birthday.isoweekday()
+        elif until_the_birthday.days < 7: # Умова при якій буде виводить дні на тиждень вперед
+            reminder = {'name': user['name'], 'congratulation_date': None} # Шаблон словника
+            weekday = birthday.isoweekday() # День тижня
 
             match weekday:
-                case 6:
+                case 6: # Якщо субота + 2 дні
                     after_weekend = birthday + timedelta(days=2)
                     reminder['congratulation_date'] = after_weekend.isoformat()
                 
-                case 7:
+                case 7: # Неділя + 1 день
                     after_weekend = birthday + timedelta(days=1)
                     reminder['congratulation_date'] = after_weekend.isoformat()
                 
-                case _:
+                case _: # Просто видить дату
                     reminder['congratulation_date'] = birthday.isoformat()
                     
-            reminder_list.append(reminder)
+            reminder_list.append(reminder) # Добавляємо дату
 
-    return reminder_list
+    return reminder_list # Вертаємо список
 
 
 users = [
