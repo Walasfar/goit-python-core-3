@@ -16,16 +16,23 @@ raw_numbers = [
 
 
 def normalize_phone(phone_number):
-    pattern = r"[\D]" # Delete everything except the numbers \D
+    
+    pattern = r"[\D]" # Видаляемо все крім чисел
     ph_number = re.sub(pattern, "", phone_number)
-    structure_number = len(ph_number)
-    match structure_number:
-        case 13:
-            return ph_number
-        case 12:
-            return "+" + ph_number
+    structure_number = len(ph_number) # Довжина номера
+    
+    match structure_number: # Буде зрівнювати з довженою конкретного номера.
+        
+        case 13: # Якщо 13
+            return ph_number # Просто вертає номер
+        
+        case 12: # У цих випадках конкатенує плюсик або код до номера
+            ph_number = "+" + ph_number
+            
         case 10:
-            return "+38" + ph_number
+            ph_number = "+38" + ph_number
+
+    return ph_number # Повертає поправлений номер
 
 normal_numers = [normalize_phone(num) for num in raw_numbers]
 
