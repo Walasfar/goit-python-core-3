@@ -5,13 +5,14 @@ def get_upcoming_birthdays(users):
     for user in users:
         now = datetime.today().date()
         birthday = datetime.strptime(user['birthday'], "%Y.%m.%d").date()
-        until_the_birthday = now - birthday # Різниця дат
-        
+        birthday = birthday.replace(year=now.year)
 
-        if birthday < now: # Якщо пройшов -> продовжуемо
-            continue
+        if birthday < now: # Якщо пройшов встановлюємо слідующий рік
+            birthday = birthday.replace(year=now.year + 1)
+
+        until_the_birthday = birthday - now # Різниця дат
         
-        elif until_the_birthday.days < 7: # Умова при якій буде виводить дні на тиждень вперед
+        if until_the_birthday.days <= 7: # Умова при якій буде виводить дні на тиждень вперед
             reminder = {'name': user['name'], 'congratulation_date': None} # Шаблон словника
             weekday = birthday.isoweekday() # День тижня
 
@@ -23,10 +24,10 @@ def get_upcoming_birthdays(users):
                 case 7: # Неділя + 1 день
                     after_weekend = birthday + timedelta(days=1)
                     reminder['congratulation_date'] = after_weekend.isoformat()
-                
-                case _: # Просто виводить дату
+
+                case _:
                     reminder['congratulation_date'] = birthday.isoformat()
-                    
+            
             reminder_list.append(reminder) # Добавляємо дату
 
     return reminder_list # Вертаємо список
@@ -39,11 +40,10 @@ users = [
     {"name": "Ivan Smith", "birthday": "2024.01.29"},
     {"name": "Sasha Smith", "birthday": "2024.02.03"},
     {"name": "Olena Smith", "birthday": "2024.02.04"},
+    {"name": "Olena Smith", "birthday": "2025.02.04"}
 ]
 
 upcoming_birthdays = get_upcoming_birthdays(users)
 
 for reminder in upcoming_birthdays:
     print(reminder)
-    
-print(upcoming_birthdays)
