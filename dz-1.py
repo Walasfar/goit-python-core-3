@@ -1,20 +1,21 @@
 # Home work III (1)
 
-from datetime import datetime, timedelta
+from datetime import datetime as dt # Імпортуємо модулі - as dt це псивдонім datetime
 
-# Argumet example: str '2020-10-09'
-def get_days_from_today(date):
-    now = datetime.today() # Time now
-    try:
-        entered_date = datetime.strptime(date, "%Y-%m-%d")  # Convert to object
-        different = now - entered_date
-        result = different.days # Deys left
-        return print(result) # Print for terminal.
-    except ValueError:
-        print("I don't understand your data: You must enter valid date template!")
-
+# Argument example: yyy-dd-mm
+def get_days_from_today(enter_date): # Передаемо аргумент ввиді дати
     
+    try: # Провіряємо введену дату
+        
+        user_date = dt.strptime(enter_date, "%Y-%m-%d") # Змінна з датою, якщо дата введена неправильно - вона йде в блок except
+        now = dt.today() # Согоднішній день
+        delta_days = now - user_date # Скільки днів пройшло або ще не настало
+        return delta_days.days # Поветаємо кількість днів
+    
+    except ValueError: # Якщо try не розібрав дату то виведеться це повідомлення
+        print("The entered event date is not suitable", ValueError)
 
-get_days_from_today('2020-01-23') # Past
-get_days_from_today('2050-01-24') # Future
-get_days_from_today('2024-01"23') # Invalid data argumet
+
+num = get_days_from_today("2024-03-02") # Присвоюємо змінній num дні, які вернула наша функція
+
+print(num) # Вивід
