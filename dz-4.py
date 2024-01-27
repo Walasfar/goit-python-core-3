@@ -5,7 +5,7 @@ def get_upcoming_birthdays(users):
     for user in users:
         now = datetime.today().date()
         birthday = datetime.strptime(user['birthday'], "%Y.%m.%d").date()
-        birthday = birthday.replace(year=now.year)
+        birthday = birthday.replace(year=now.year) # Теперішній рік для ДН
 
         if birthday < now: # Якщо пройшов встановлюємо слідующий рік
             birthday = birthday.replace(year=now.year + 1)
@@ -36,7 +36,7 @@ def get_upcoming_birthdays(users):
 users = [
     {"name": "Olek Smith", "birthday": "2024.01.20"},
     {"name": "Fedor Smith", "birthday": "2024.01.22"},
-    {"name": "Jane Smith", "birthday": "2024.01.27"},
+    {"name": "Jane Smith", "birthday": "2020.01.27"},
     {"name": "Ivan Smith", "birthday": "2024.01.29"},
     {"name": "Sasha Smith", "birthday": "2024.02.03"},
     {"name": "Olena Smith", "birthday": "2024.02.04"},
