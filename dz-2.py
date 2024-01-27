@@ -2,9 +2,9 @@
 
 import random
 
-def get_numbers_ticket(min, max, quantity):
-    if min >= 1 and max <= 1000:
-        list_of_numbers = random.sample(range(min, max), quantity) # Create list of random uniq numbers
+def get_numbers_ticket(min_tickets, max_tickets, quantity):
+    if min_tickets >= 1 and max_tickets <= 1000:
+        list_of_numbers = random.sample(range(min_tickets, max_tickets), quantity) # Create list of random uniq numbers
         list_of_numbers.sort() # sort
         return list_of_numbers
     else: # If numbers range bad provided
