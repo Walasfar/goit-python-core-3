@@ -4,13 +4,20 @@ import random
 
 def get_numbers_ticket(min_number, max_number, quantity):
     
-    if min_number >= 1 and max_number <= 1000: # Числа мають бути більше 0 і мін рівно 1000
-        # Завдяки random гереруємо список з  різними унікальними числами.
-        list_of_numbers = random.sample(range(min_number, max_number), quantity)
-        list_of_numbers.sort() # Сортуємо числа.
-        return list_of_numbers # Повертаємо список з числами.
-    
-    else: # If numbers range bad provided
-        print("Введено неправильний діапазон!")
+    if quantity > (max_number - min_number + 1):
+        return []
+    elif min_number < 1 or max_number > 1000:
+        return []
+    elif min_number > max_number:
+        return []
 
-print(get_numbers_ticket(1, 1000, 6))
+
+    ticket_numbers = set()
+    for n in range(quantity):
+        ticket_numbers.add(random.randint(min_number, max_number))
+
+    return sorted(ticket_numbers)
+
+print("Ваші лотерейні квитки: ", get_numbers_ticket(10, 1000, 5
+
+
