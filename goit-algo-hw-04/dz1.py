@@ -1,3 +1,8 @@
+'''
+Functions take a path to file with data salaries,
+and return tuple with total salary and average salaries.
+'''
+
 def total_salary(path):
     
     try: # Пробуємо відкрити файл
