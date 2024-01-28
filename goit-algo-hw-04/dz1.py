@@ -21,12 +21,13 @@ def total_salary(path):
                 salary = int(line.split(",")[1]) # Забираємо зарплату та перетворюємо на int
                 all_salaries.append(salary)
                 total_salary += salary
+                average_salary = total_salary / len(all_salaries)
                 
     except FileNotFoundError:
         print("File not found!")
         return 0
     
-    return f"total_salary: {total_salary}, average_salary: {(total_salary / len(all_salaries))}"
+    return f"total_salary: {total_salary}, average_salary: {average_salary}"
 
 salaries_data = total_salary('dz1.txt')
 
