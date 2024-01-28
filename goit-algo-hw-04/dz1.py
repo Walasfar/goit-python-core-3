@@ -7,12 +7,12 @@ def total_salary(path):
     
     try: # Пробуємо відкрити файл
         with open(path, 'r', encoding='utf-8' ) as file:
-            
+
             total_salary = 0
             all_salaries = []
             
             while True:
-                
+
                 line = file.readline()
                 
                 if not line: # Коли рядки закінчаться цикл перестане читати файл
@@ -26,8 +26,8 @@ def total_salary(path):
         print("File not found!")
         return 0
     
-    return (total_salary, total_salary / len(all_salaries))
+    return f"total_salary: {total_salary}, average_salary: {(total_salary / len(all_salaries))}"
 
 salaries_data = total_salary('dz1.txt')
 
-print(type(salaries_data), salaries_data)
+print(salaries_data)
