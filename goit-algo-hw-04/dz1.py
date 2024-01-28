@@ -6,7 +6,7 @@ and return tuple with total salary and average salaries.
 def total_salary(path):
     
     try: # Пробуємо відкрити файл
-        with open(path, 'r') as file:
+        with open(path, 'r', encoding='utf-8' ) as file:
             
             total_salary = 0
             all_salaries = []
