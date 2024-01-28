@@ -26,6 +26,7 @@ def main():
         
             user_input = input("Enter a command: ")
             command, *args = parse_input(user_input)
+            name = args[0]
             
             if command in ["close", "exit"]:
                 print("Good bye!")
@@ -33,6 +34,7 @@ def main():
             
             try:
                 match command:
+                    
                     case "all":
                         
                         if len(contacts) > 0:
@@ -47,13 +49,15 @@ def main():
                         print("How can I help you?")
                         
                     case "add":
-                        print(add_contact(args, contacts))
+                        if name in contacts:
+                            print("Name exists!")
+                        else:
+                            print(add_contact(args, contacts))
                     
                     case "change":
                         print(change_number(args, contacts))
                     
                     case "phone":
-                        name = args[0]
                         if name in contacts:
                             print(f"Phone {name}: ", contacts[args[0]])
                         else:
