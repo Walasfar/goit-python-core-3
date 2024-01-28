@@ -64,6 +64,8 @@ def main():
                     
             except ValueError as e:
                 print(f"You enter bad commands! Need: command name number")
+                
+    return contacts
 
 
 if __name__ == "__main__":
