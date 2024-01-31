@@ -27,8 +27,8 @@ def total_salary(path):
         print("File not found!")
         return 0
     
-    return f"total_salary: {total_salary}, average_salary: {average_salary}"
+    return [total_salary, average_salary]
 
-salaries_data = total_salary('dz1.txt')
+total, average = total_salary('dz1.txt')
+print(f"total_salary: {total}, average_salary: {average}")
 
-print(salaries_data)
