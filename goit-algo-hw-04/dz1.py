@@ -4,8 +4,8 @@ and return tuple with total salary and average salaries.
 '''
 
 def total_salary(path):
-    
-    try: # Пробуємо відкрити файл
+    # Пробуємо відкрити файл
+    try: 
         with open(path, 'r', encoding='utf-8' ) as file:
 
             total_salary = 0
@@ -15,12 +15,14 @@ def total_salary(path):
 
                 line = file.readline()
                 
-                if not line: # Коли рядки закінчаться цикл перестане читати файл
+                # Коли рядки закінчаться цикл перестане читати файл
+                if not line:
                     break
                 
-                salary = int(line.split(",")[1]) # Забираємо зарплату та перетворюємо на int
-                all_salaries.append(salary)
+                # Забираємо зарплату та перетворюємо на int
+                salary = int(line.split(",")[1])
                 total_salary += salary
+                all_salaries.append(salary)
                 average_salary = total_salary / len(all_salaries)
                 
     except FileNotFoundError:
