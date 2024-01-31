@@ -26,8 +26,11 @@ def show_base(adress_book):
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
+    print("List of commands:\n\tall;\n\tadd user number;\n\tphone user;\n\tchange user number;\n\texit/quit/close\n")
     
+    # Цикл бота
     while True:
+        
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
         
@@ -36,21 +39,24 @@ def main():
             if command in ["close", "quit", "exit"]:
                 print("Good bye!")
                 break
+            
             elif command == 'hello':
                 print("Hello im here for help you!")
             
             elif command == 'all':
-            
+                
                 if len(contacts) == 0:
                     print("Base is empty.")
                 else:
                     show_base(contacts)
-                
-            elif command == 'add':
-                add_contact(args, contacts)
+            else:
+                print("Invalid command!")
                 
             match command:
                 
+                case 'add':
+                    add_contact(args, contacts)
+                    
                 case 'change':
                     print (change_number(args, contacts))
                     
@@ -59,7 +65,7 @@ def main():
                 
         except ValueError as e:
             print("Number argumets is required!")
-        
+
 
 if __name__ == "__main__":
     main()
