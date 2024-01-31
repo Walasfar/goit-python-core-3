@@ -23,10 +23,12 @@ def show_base(adress_book):
     for key, value in adress_book.items():
         print(f"Name: {key}, number: {value}")
 
+commands = "Commands:\n\tall;\n\tadd user number;\n\tphone user;\n\tchange user number;\n\texit/quit/close\n"
+
 def main():
     contacts = {}
     print("Welcome to the assistant bot!")
-    print("List of commands:\n\tall;\n\tadd user number;\n\tphone user;\n\tchange user number;\n\texit/quit/close\n")
+    print(commands)
     
     # Цикл бота
     while True:
@@ -41,7 +43,7 @@ def main():
                 break
             
             elif command == 'hello':
-                print("Hello im here for help you!")
+                print("Hello im Jarvis! Im here for help you!")
             
             elif command == 'all':
                 
@@ -49,8 +51,6 @@ def main():
                     print("Base is empty.")
                 else:
                     show_base(contacts)
-            else:
-                print("Invalid command!")
                 
             match command:
                 
@@ -61,11 +61,16 @@ def main():
                     print (change_number(args, contacts))
                     
                 case 'phone':
-                    print(f"Phone {args[0]} - {contacts[args[0]]}")
-                
+                    if len(contacts) > 0:
+                        print(f"Phone {args[0]} - {contacts[args[0]]}")
+                    else:
+                        print("User not found.")
+                    
+                case 'commands':
+                    print(commands)
+                    
         except ValueError as e:
             print("Number argumets is required!")
-
 
 if __name__ == "__main__":
     main()
