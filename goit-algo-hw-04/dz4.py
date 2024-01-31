@@ -37,7 +37,6 @@ def main():
         command, *args = parse_input(user_input)
         
         try:
-            
             if command in ["close", "quit", "exit"]:
                 print("Good bye!")
                 break
@@ -52,8 +51,7 @@ def main():
                 else:
                     show_base(contacts)
                 
-            match command:
-                
+            match command:    
                 case 'add':
                     add_contact(args, contacts)
                     
@@ -61,6 +59,7 @@ def main():
                     print (change_number(args, contacts))
                     
                 case 'phone':
+                    
                     if len(contacts) > 0:
                         print(f"Phone {args[0]} - {contacts[args[0]]}")
                     else:
